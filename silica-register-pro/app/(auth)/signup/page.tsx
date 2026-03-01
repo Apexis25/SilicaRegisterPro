@@ -35,15 +35,30 @@ export default function SignupPage() {
     if (authError) { setError(authError.message) } else { setStep('verify') }
   }
 
-  const navStyle = {
-    borderBottom: '1px solid #1f2937',
-    padding: '16px 32px',
+  const base: React.CSSProperties = {
+    minHeight: '100vh',
+    backgroundColor: '#030712',
+    color: '#f9fafb',
+    fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
     display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
+    flexDirection: 'column',
   }
 
-  const logoIconStyle = {
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    boxSizing: 'border-box',
+    backgroundColor: '#1f2937',
+    border: '1px solid #374151',
+    borderRadius: '10px',
+    padding: '13px 16px',
+    color: '#f9fafb',
+    fontSize: '15px',
+    outline: 'none',
+    marginBottom: '16px',
+    display: 'block',
+  }
+
+  const logoIcon: React.CSSProperties = {
     width: '32px',
     height: '32px',
     borderRadius: '8px',
@@ -53,29 +68,16 @@ export default function SignupPage() {
     justifyContent: 'center',
   }
 
-  const inputStyle = {
-    width: '100%',
-    boxSizing: 'border-box' as const,
-    backgroundColor: '#1f2937',
-    border: '1px solid #374151',
-    borderRadius: '10px',
-    padding: '13px 16px',
-    color: '#f9fafb',
-    fontSize: '15px',
-    outline: 'none',
-    marginBottom: '16px',
-  }
-
   if (step === 'verify') {
     return (
-      <div style={{ minHeight: '100vh', backgroundColor: '#030712', color: '#f9fafb', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', display: 'flex', flexDirection: 'column' }}>
-        <nav style={navStyle}>
-          <div style={logoIconStyle}>
+      <div style={base}>
+        <nav style={{ borderBottom: '1px solid #1f2937', padding: '16px 32px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={logoIcon}>
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
             </svg>
           </div>
-          <span style={{ fontWeight: 700, fontSize: '17px', letterSpacing: '-0.3px' }}>
+          <span style={{ fontWeight: 700, fontSize: '17px' }}>
             SilicaRegister<span style={{ color: '#22c55e' }}> Pro</span>
           </span>
         </nav>
@@ -91,7 +93,7 @@ export default function SignupPage() {
             <p style={{ color: '#22c55e', fontWeight: 600, marginBottom: '28px' }}>{form.email}</p>
             <div style={{ backgroundColor: '#111827', border: '1px solid #1f2937', borderRadius: '14px', padding: '24px', textAlign: 'left', marginBottom: '20px' }}>
               {[
-                '14-day free trial — no credit card required',
+                '14-day free trial - no credit card required',
                 'Full access to all features from day one',
                 'Setup takes less than 5 minutes',
               ].map(item => (
@@ -111,40 +113,35 @@ export default function SignupPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#030712', color: '#f9fafb', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', display: 'flex', flexDirection: 'column' }}>
-
-      {/* Nav */}
+    <div style={base}>
       <nav style={{ borderBottom: '1px solid #1f2937', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={logoIconStyle}>
+          <div style={logoIcon}>
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
             </svg>
           </div>
-          <span style={{ fontWeight: 700, fontSize: '17px', letterSpacing: '-0.3px' }}>
+          <span style={{ fontWeight: 700, fontSize: '17px' }}>
             SilicaRegister<span style={{ color: '#22c55e' }}> Pro</span>
           </span>
         </div>
         <Link href="/login" style={{ fontSize: '14px', color: '#9ca3af', textDecoration: 'none' }}>
-          Already have an account? <span style={{ color: '#22c55e', fontWeight: 600 }}>Sign in →</span>
+          {'Already have an account?'}{' '}<span style={{ color: '#22c55e', fontWeight: 600 }}>{'Sign in'}</span>
         </Link>
       </nav>
 
-      {/* Main */}
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '48px 20px' }}>
         <div style={{ width: '100%', maxWidth: '440px' }}>
 
-          {/* Header */}
           <div style={{ marginBottom: '28px' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', borderRadius: '999px', padding: '4px 12px', marginBottom: '16px' }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#22c55e', display: 'inline-block' }} />
-              <span style={{ fontSize: '12px', color: '#22c55e', fontWeight: 600 }}>14-day free trial — no credit card</span>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#22c55e', display: 'inline-block' }}></span>
+              <span style={{ fontSize: '12px', color: '#22c55e', fontWeight: 600 }}>14-day free trial - no credit card</span>
             </div>
             <h1 style={{ fontSize: '30px', fontWeight: 800, color: '#f9fafb', marginBottom: '8px', lineHeight: 1.2 }}>Start managing silica compliance</h1>
             <p style={{ color: '#6b7280', fontSize: '15px' }}>Built for Australian PCBUs. SafeWork audit-ready in minutes.</p>
           </div>
 
-          {/* Card */}
           <div style={{ backgroundColor: '#111827', border: '1px solid #1f2937', borderRadius: '16px', padding: '32px' }}>
             <form onSubmit={handleSubmit}>
               {error && (
@@ -157,22 +154,22 @@ export default function SignupPage() {
               )}
 
               <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, color: '#d1d5db', marginBottom: '8px' }}>
-                Company / PCBU Name <span style={{ color: '#f87171' }}>*</span>
+                {'Company / PCBU Name'} <span style={{ color: '#f87171' }}>*</span>
               </label>
               <input type="text" value={form.org_name} onChange={e => field('org_name', e.target.value)} placeholder="e.g. Apex Construction Pty Ltd" required style={inputStyle} />
 
               <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, color: '#d1d5db', marginBottom: '8px' }}>
-                Your Full Name <span style={{ color: '#f87171' }}>*</span>
+                {'Your Full Name'} <span style={{ color: '#f87171' }}>*</span>
               </label>
               <input type="text" value={form.full_name} onChange={e => field('full_name', e.target.value)} placeholder="e.g. Jordan Smith" required style={inputStyle} />
 
               <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, color: '#d1d5db', marginBottom: '8px' }}>
-                Work Email <span style={{ color: '#f87171' }}>*</span>
+                {'Work Email'} <span style={{ color: '#f87171' }}>*</span>
               </label>
               <input type="email" value={form.email} onChange={e => field('email', e.target.value)} placeholder="you@company.com.au" required style={inputStyle} />
 
               <label style={{ display: 'block', fontSize: '14px', fontWeight: 500, color: '#d1d5db', marginBottom: '8px' }}>
-                ABN <span style={{ color: '#4b5563', fontWeight: 400 }}>(optional)</span>
+                {'ABN'} <span style={{ color: '#4b5563', fontWeight: 400 }}>{'(optional)'}</span>
               </label>
               <input type="text" value={form.abn} onChange={e => field('abn', e.target.value)} placeholder="12 345 678 901" style={{ ...inputStyle, marginBottom: '20px' }} />
 
@@ -181,17 +178,18 @@ export default function SignupPage() {
                 disabled={loading}
                 style={{ width: '100%', padding: '14px', backgroundColor: loading ? '#15803d' : '#22c55e', color: '#000', border: 'none', borderRadius: '10px', fontSize: '15px', fontWeight: 700, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.8 : 1 }}
               >
-                {loading ? 'Creating account…' : 'Create Free Account →'}
+                {loading ? 'Creating account...' : 'Create Free Account'}
               </button>
 
               <p style={{ fontSize: '12px', color: '#4b5563', textAlign: 'center', marginTop: '14px' }}>
-                By signing up you agree to our{' '}
+                {'By signing up you agree to our'}{' '}
                 <a href="#" style={{ color: '#6b7280', textDecoration: 'underline' }}>Terms</a>
-                {' '}and{' '}
+                {' and '}
                 <a href="#" style={{ color: '#6b7280', textDecoration: 'underline' }}>Privacy Policy</a>
               </p>
             </form>
           </div>
+
         </div>
       </div>
     </div>
