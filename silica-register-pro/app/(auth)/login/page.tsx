@@ -125,7 +125,7 @@ export default function LoginPage() {
               </div>
 
               <div style={{ textAlign: 'center', marginTop: '24px', fontSize: '14px', color: '#6b7280' }}>
-                Don&apos;t have an account?{' '}
+                {"Don't have an account?"}{' '}
                 <Link href="/signup" style={{ color: '#22c55e', textDecoration: 'none', fontWeight: 600 }}>Start your free trial</Link>
               </div>
             </>
@@ -133,7 +133,5 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-  )
-}
   )
 }
